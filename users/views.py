@@ -55,3 +55,12 @@ class LoginView(APIView):
 
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
+#test api
+
+from rest_framework.permissions import IsAuthenticated
+
+class TestProtectedView(APIView):
+    permission_classes = [IsAuthenticated]
+
+    def get(self,request):
+        return Response({"message": "You are Authenticated"})
